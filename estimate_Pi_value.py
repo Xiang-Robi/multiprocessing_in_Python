@@ -38,6 +38,8 @@ if __name__ == '__main__':
     pool = multiprocessing.Pool(processes=num_processes)
     args_generator = (None for _ in range(total_num_trials))  # generator saves RAM
     trial_results = pool.map(worker, args_generator)
+    pool.close()
+    pool.join()
 
     radius = 1
     side_length = 2
